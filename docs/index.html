@@ -1,232 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daily Briefing — May 31, 2026</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Daily Briefing · May 31, 2026</title>
   <style>
-    /* ── Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: #f5f5f0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #f2f0eb;
       color: #1a1a1a;
-      line-height: 1.65;
-      padding: 0 1rem 4rem;
+      line-height: 1.7;
     }
-    a { color: inherit; }
-    a:hover { text-decoration: underline; }
+
+    /* ── Wrapper ── */
+    .page { max-width: 680px; margin: 0 auto; background: #fff; }
 
     /* ── Header ── */
-    header {
-      max-width: 780px; margin: 0 auto;
-      padding: 2.5rem 0 1.5rem;
-      border-bottom: 2px solid #1a1a1a;
+    .header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
     }
-    header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-    header p  { color: #555; font-size: 0.88rem; margin-top: 0.3rem; }
-
-    /* ── Section wrapper ── */
-    .section {
-      max-width: 780px; margin: 2.5rem auto 0;
-      background: #fff;
-      border-radius: 8px;
-      border: 1px solid #e0e0d8;
-      overflow: hidden;
-    }
-    .section-header {
-      padding: 1rem 1.5rem;
+    .header h1 {
+      font-size: 2.2rem;
       font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
+      letter-spacing: -1px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    .finance   .section-header { background: #1a3a5c; color: #fff; }
-    .economics .section-header { background: #1c5c2e; color: #fff; }
-    .ai        .section-header { background: #3d1a5c; color: #fff; }
+    .header p {
+      color: #aaa;
+      font-size: 0.82rem;
+      margin-top: 0.4rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Markets ticker ── */
+    .markets-block {
+      background: #f9f9f7;
+      border-bottom: 2px solid #1a1a1a;
+      padding: 1.5rem 2rem;
+    }
+    .markets-block h2 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+    table.markets { width: 100%; border-collapse: collapse; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    table.markets tr { border-bottom: 1px solid #eee; }
+    table.markets tr:last-child { border-bottom: none; }
+    table.markets td { padding: 0.45rem 0; font-size: 0.9rem; }
+    .mkt-name  { color: #555; width: 45%; }
+    .mkt-value { font-weight: 600; width: 30%; }
+    .mkt-change { width: 25%; text-align: right; font-weight: 600; font-size: 0.85rem; }
+    .up   { color: #1a7a3a; }
+    .down { color: #c0392b; }
+    .mkt-note {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 0.8rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      padding: 0.6rem 2rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .label-finance   { background: #1a3a5c; }
+    .label-economics { background: #1c5c2e; }
+    .label-ai        { background: #3d1a5c; }
 
     /* ── Items ── */
-    .items { padding: 0 1.5rem; }
+    .items { padding: 0 2rem; }
     .item {
-      padding: 1.2rem 0;
+      padding: 1.5rem 0;
       border-bottom: 1px solid #eee;
     }
     .item:last-child { border-bottom: none; }
     .item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.45rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
       line-height: 1.4;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    .item h3 a { text-decoration: none; color: #1a1a1a; }
+    .item h3 a { color: #1a1a1a; text-decoration: none; }
     .item h3 a:hover { text-decoration: underline; }
     .source {
       display: inline-block;
       margin-left: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: #888;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #999;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    .summary { font-size: 0.93rem; color: #333; margin-bottom: 0.4rem; }
-    .why { font-size: 0.88rem; color: #555; }
+    .summary { font-size: 0.95rem; color: #222; margin-bottom: 0.5rem; }
+    .why {
+      font-size: 0.88rem;
+      color: #555;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
     .why strong { color: #1a1a1a; }
 
     /* ── Learn block ── */
     .learn {
-      margin: 0 1.5rem;
-      padding: 1rem 1.2rem;
-      background: #f9f9f6;
+      margin: 0 2rem 2rem;
+      padding: 1.2rem 1.4rem;
       border-radius: 6px;
-      border-left: 3px solid #ccc;
-      margin-bottom: 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    .finance   .learn { border-color: #1a3a5c; }
-    .economics .learn { border-color: #1c5c2e; }
-    .ai        .learn { border-color: #3d1a5c; }
-    .learn h3 { font-size: 0.9rem; margin-bottom: 0.4rem; }
-    .learn p  { font-size: 0.88rem; color: #444; }
+    .finance-section   .learn { background: #eef3f8; border-left: 3px solid #1a3a5c; }
+    .economics-section .learn { background: #eef5f0; border-left: 3px solid #1c5c2e; }
+    .ai-section        .learn { background: #f3eef8; border-left: 3px solid #3d1a5c; }
+    .learn h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .learn p  { font-size: 0.88rem; color: #333; margin-bottom: 0.4rem; }
+    .learn p:last-child { margin-bottom: 0; }
+
+    /* ── Divider ── */
+    .divider { height: 6px; background: #1a1a1a; }
 
     /* ── Footer ── */
-    footer {
-      max-width: 780px; margin: 2.5rem auto 0;
-      font-size: 0.8rem; color: #999; text-align: center;
+    .footer {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #aaa;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f9f9f7;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
+<div class="page">
 
-<header>
-  <h1>Daily Briefing</h1>
-  <p>Last updated: Sunday, May 31, 2026 — 07:32 PM</p>
-</header>
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Daily Briefing</h1>
+    <p>Sunday, May 31, 2026 · 07:48 PM · Finance · Economics · AI</p>
+  </div>
 
-<!-- FINANCE -->
-<div class="section finance">
-  <div class="section-header">📈 Finance &amp; Markets</div>
-  Here is the Finance & Markets briefing for Sunday, May 31, 2026:
+  <!-- MARKETS -->
+  <div class="markets-block">
+    <h2>📊 Markets at a glance</h2>
+    Based on the data retrieved from Yahoo Finance, Investing.com, CNBC, and Trading Economics for the May 29, 2026 market close (most recent trading day before Sunday May 31):
+
+```html
+<table class="markets">
+  <tr>
+    <td class="mkt-name">S&amp;P 500</td>
+    <td class="mkt-value">7,580.06</td>
+    <td class="mkt-change up">▲ 0.22%</td>
+  </tr>
+  <tr>
+    <td class="mkt-name">Nasdaq</td>
+    <td class="mkt-value">26,972.62</td>
+    <td class="mkt-change up">▲ 0.20%</td>
+  </tr>
+  <tr>
+    <td class="mkt-name">Dow Jones</td>
+    <td class="mkt-value">51,032.46</td>
+    <td class="mkt-change up">▲ 0.72%</td>
+  </tr>
+  <tr>
+    <td class="mkt-name">10-Year Treasury</td>
+    <td class="mkt-value">4.44%</td>
+    <td class="mkt-change down">▼ 1 bps</td>
+  </tr>
+  <tr>
+    <td class="mkt-name">USD / MXN</td>
+    <td class="mkt-value">19.22</td>
+    <td class="mkt-change up">▲ 0.12%</td>
+  </tr>
+  <tr>
+    <td class="mkt-name">Bitcoin</td>
+    <td class="mkt-value">$74,069</td>
+    <td class="mkt-change up">▲ 0.69%</td>
+  </tr>
+</table>
+<p class="mkt-note">Data as of market close May 29, 2026. <span class="up">▲ green = up</span> · <span class="down">▼ red = down</span></p>
+```
+  </div>
+
+  <!-- FINANCE -->
+  <div class="finance-section">
+    <div class="section-label label-finance">📈 Finance &amp; Markets</div>
+    Now I have all the data I need to build the newsletter. Here it is:
 
 <div class="items">
 
   <div class="item">
-    <h3><a href="https://finance.yahoo.com/markets/live/dow-nasdaq-sp-gain-stock-market-today-friday-may-29-222720284.html" target="_blank" rel="noopener">Dow, S&P 500 & Nasdaq Cap Winning Month With Fresh Records in AI-Fueled Rally as Trump Nears Iran Decision</a>
-        <span class="source">Yahoo Finance / Reuters</span></h3>
+    <h3><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-may-29-2026" target="_blank" rel="noopener">US Stocks Close Out Nine-Week Win Streak as Dow Crosses 51,000 for the First Time</a>
+        <span class="source">TheStreet / CNBC</span></h3>
     <p class="summary">
-      U.S. markets closed out May on a high note on Friday (the last full trading day of the week). The S&P 500 and Nasdaq each rose about 0.2%, while the Dow Jones gained 0.7%. For the full month of May, the Nasdaq jumped more than 8%, the S&P 500 advanced 5%, and the Dow rose 3%. The S&P 500 also notched its ninth consecutive week of gains — its longest winning streak since 2023. Two big catalysts drove the rally: the broader advance was supported by easing oil prices, blowout earnings, and enthusiasm around the AI trade. Reports emerged that the U.S. and Iran agreed to a 60-day memorandum extending the ongoing ceasefire and restoring vessel flows through the Strait of Hormuz, though President Trump had not yet signed off on the deal.
+      The Dow Jones closed at 51,032, up +0.72%; the Nasdaq finished at 26,972, up +0.20%; and the S&P 500 settled at 7,580, up +0.22%.
+      The S&P 500 secured its ninth consecutive week of gains, driven by strength in the AI rally and ongoing hopes around a U.S.–Iran peace deal.
+      The Dow's outperformance was powered by tech giants like IBM (+11.39%), Salesforce (+9.32%), and Microsoft (+3.47%), while Walmart (–2.94%), Johnson & Johnson (–2.31%), and Nike (–2.26%) were the biggest laggards.
     </p>
-    <p class="why"><strong>Why it matters:</strong> Markets are eager for relief on the U.S.-Iran war front because the closure of the Strait of Hormuz has been exacerbating rapidly rising prices and raising concerns about the Federal Reserve's next moves on interest rates. For Mexican investors, U.S. market trends also influence Mexico's own stock exchange (BMV) and the peso's stability. On Friday, the Dow was led higher by IBM (+12.9%), Salesforce (+8.46%), and Microsoft (+5.45%).</p>
+    <p class="why"><strong>Why it matters:</strong> On a monthly basis, the Nasdaq jumped more than 8%, the S&P 500 advanced 5%, and the Dow rose 3% — a reminder that staying invested during volatile periods can capture meaningful gains. The Dow crossing 51,000 is a milestone that shows how dramatically markets have recovered in 2026.</p>
   </div>
 
   <div class="item">
-    <h3><a href="https://www.cnbc.com/2026/05/29/feds-bowman-warns-against-hiking-interest-rates-due-to-inflation-spike.html" target="_blank" rel="noopener">Fed Governor Bowman Warns Against Hiking Rates Despite Inflation Spike; PCE Hits 3.8%</a>
+    <h3><a href="https://www.fool.com/coverage/stock-market-today/2026/05/28/stock-market-today-may-28-inflation-isn-t-stopping-this-stock-market-rally/" target="_blank" rel="noopener">Hot PCE Inflation Print Can't Stop the Rally — But It Freezes the Fed</a>
+        <span class="source">The Motley Fool / BEA</span></h3>
+    <p class="summary">
+      April's Personal Consumption Expenditures (PCE) index showed prices rose 3.8% year-on-year, as soaring energy costs have pushed up living costs.
+      Core PCE — which strips out food and energy — rose to 3.3% in April from 3.2% in March, well above the Fed's 2% target.
+      Concern about sticky inflation makes it difficult for the Federal Reserve to cut interest rates, and markets now expect rates to remain unchanged for the remainder of the year.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> The Fed uses the PCE index to decide where to set the federal funds rate, which in turn influences the interest rates that credit card companies and other lenders charge consumers. When inflation is high and rates stay put, borrowing stays expensive — in both the U.S. and Mexico.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://www.cnbc.com/2026/05/28/dell-q1-earnings-report-2027.html" target="_blank" rel="noopener">Dell Blows Past Estimates With 88% Revenue Jump, Powered by AI Server Demand</a>
+        <span class="source">CNBC / SEC Filing</span></h3>
+    <p class="summary">
+      Dell reported adjusted earnings per share of $4.86 versus $2.94 expected, and revenue of $43.84 billion versus $35.43 billion expected — with revenue soaring nearly 88% year over year.
+      AI server revenue reached $16.1 billion in the quarter, with $24.4 billion in orders booked and a massive $51.3 billion backlog reported.
+      Dell jumped ~33% on Friday after issuing better-than-expected guidance, raising full-year AI server revenue expectations to $60 billion for fiscal 2027.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> Shares of competing computer companies also climbed — Hewlett Packard Enterprise jumped 13.7% and Super Micro Computer gained 8.6% — showing how a single blockbuster earnings report can lift an entire sector. This is called a "halo effect" and is a key concept for beginner investors to recognize.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://tradingeconomics.com/mexico/currency" target="_blank" rel="noopener">Banxico Ends Rate-Cut Cycle at 6.5% as Peso Trades Near 17.3 per Dollar</a>
+        <span class="source">Trading Economics / Banxico</span></h3>
+    <p class="summary">
+      The Bank of Mexico lowered its benchmark interest rate by 25 basis points to 6.5%, but signaled that the easing cycle that began in March 2024 has likely ended.
+      Banxico adopted a more cautious stance as elevated energy prices due to the war in the Middle East threaten inflation expectations in the Mexican economy, which also supported the peso carry trade and the currency.
+      The peso traded near 17.3 per USD in late May as markets monitored U.S.–Iran peace negotiations, while domestically investors assessed revised GDP data showing Mexico's economy contracted 0.6% quarter-on-quarter in Q1 and expanded just 0.2% from a year earlier.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> Inflation in Mexico slowed more than expected in the first half of May to an annual rate of 4.1%, though it remained above target — following Moody's downgrade of Mexico's sovereign rating to "Baa3," the lowest investment-grade level. For Mexicans, a weaker economy combined with rate decisions directly affects savings rates, loan costs, and the purchasing power of the peso.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://www.cnbc.com/2026/05/26/stock-market-today-live-updates.html" target="_blank" rel="noopener">Oil Drops as Iran-U.S. Ceasefire Talks Advance — Energy Sector Gives Back Gains</a>
         <span class="source">CNBC</span></h3>
     <p class="summary">
-      Federal Reserve Governor Michelle Bowman cautioned on Friday against raising interest rates to address the current spike in prices, arguing that "reacting to temporarily elevated energy price inflation would add unwarranted policy restraint." Her comments came one day after a key inflation report: the Commerce Department reported that the PCE price index — the Fed's benchmark inflation gauge — rose 3.8% in April and 3.3% when excluding food and energy. The Fed's current policy rate remains at a target range of 3.5% to 3.75%. A majority of Fed officials at their most recent meeting had anticipated that rate increases would be necessary if the Iran war continued to aggravate inflation; the meeting featured four "no" votes, the most since 1992.
+      A decline in oil prices lent the Dow support mid-week: U.S. crude oil fell 5.55% to settle at $88.68 a barrel after Iranian state media said the country was committed to restoring commercial traffic through the Strait of Hormuz to pre-war levels within one month.
+      The inflation data earlier in the week did not stop major indexes from pushing upward, as news of a possible 60-day truce agreement between the U.S. and Iran continued to buoy stocks.
+      By Friday's close, front-month U.S. crude oil fell another 1% to $87.93, while gold futures rose 1% to $4,578.50 — a sign investors are hedging across both risk-on and safe-haven assets simultaneously.
     </p>
-    <p class="why"><strong>Why it matters:</strong> "We no longer expect the Fed to cut rates this year," Bank of America economists said, noting that multiple shocks — including the Iran war, tariffs, and the emergence of AI — are making it harder to forecast interest rate moves. Higher U.S. rates for longer generally strengthen the dollar and can put pressure on emerging-market currencies like the Mexican peso.</p>
+    <p class="why"><strong>Why it matters:</strong> The Middle East conflict has been a central driver of global inflation in 2026 — the Strait of Hormuz carries roughly 20% of the world's oil. Reports that the U.S. and Iran agreed to a 60-day memorandum that would extend a ceasefire and restore vessel flows through the Strait were circulating, though a final deal remains unsigned — keeping energy markets on edge.</p>
+  </div>
+
+</div>
+
+<div class="learn">
+  <h3>💡 Today's Concept: THE EARNINGS SURPRISE</h3>
+  <p><strong>What it is:</strong> An "earnings surprise" happens when a company reports profits or revenue that are significantly higher (or lower) than what Wall Street analysts expected. The bigger the surprise, the bigger the stock move — because markets had already "priced in" the old forecast.</p>
+  <p><strong>How to apply it:</strong> Look at Dell this week: analysts expected earnings per share of $2.94, but Dell delivered $4.86 — a 65% beat — and the stock jumped ~33% in a single day. Next time you hear a company "beat estimates," check <em>by how much</em>: a 5% beat barely moves a stock, while a 65% beat can make history. You can find analyst consensus estimates for free on sites like Yahoo Finance before any major earnings date.</p>
+</div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ECONOMICS -->
+  <div class="economics-section">
+    <div class="section-label label-economics">🌎 Economics — World &amp; Mexico</div>
+    Now I have enough information to write the full briefing. Let me compile all the data into the required HTML format.
+
+<div class="items">
+
+  <div class="item">
+    <h3><a href="https://ustr.gov/about/policy-offices/press-office/press-releases/2026/may/united-states-and-mexico-conclude-first-bilateral-round-related-joint-review-usmca" target="_blank" rel="noopener">U.S. and Mexico Conclude First Bilateral Round of USMCA Review Talks in Mexico City</a>
+        <span class="source">U.S. Trade Representative (USTR)</span></h3>
+    <p class="summary">
+      Mexican and U.S. officials concluded the first bilateral round of USMCA negotiations in Mexico City, covering key regional economic issues including automotive rules of origin — the rules that determine where a product must be made to qualify for lower tariffs — steel and aluminum, and regional economic security. The United States entered the talks with the stated goals of reducing the trade deficit — the gap between how much the U.S. imports from Mexico versus how much it exports — and strengthening American supply chains. Both sides confirmed a second round will be held in Washington D.C. on June 16–17, covering agriculture and fair competition, followed by a third round in Mexico City the week of July 20 to resolve pending issues.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> Thanks to the USMCA, Mexico is the United States' number-one trading partner, and trade with the U.S. alone represents more than 80% of Mexican exports. The outcome of these talks will directly shape investment conditions, factory jobs, and the peso's strength for years to come — making this the single most important event on Mexico's economic calendar right now.</p>
   </div>
 
   <div class="item">
-    <h3><a href="https://www.cnbc.com/2026/05/27/stock-market-today-live-updates.html" target="_blank" rel="noopener">Tech Sector Powers Record Rally: Snowflake Soars 36% on AI Earnings Beat; Dell Adds More Fuel</a>
+    <h3><a href="https://mexicobusiness.news/policyandeconomy/news/banxico-cuts-mexico-2026-gdp-forecast-11" target="_blank" rel="noopener">Banxico Slashes Mexico's 2026 GDP Forecast to 1.1% After Q1 Contraction</a>
+        <span class="source">Mexico Business News / Banxico</span></h3>
+    <p class="summary">
+      Banxico — Mexico's central bank — cut its 2026 GDP (the total value of everything the country produces) forecast to 1.1%, marking the second consecutive downward revision, after the economy contracted 0.6% in the first quarter of 2026. INEGI data shows the primary, secondary, and tertiary sectors all contracted in Q1; the primary sector (agriculture and fishing) recorded the biggest decline at –1.4%, while manufacturing and construction fell 1.1%, and services dropped 0.6%. Banxico's governor highlighted that private consumption is likely to show an upward trend, while investment is expected to remain subdued at least until the second half of 2026, amid ongoing uncertainties over trade relations with the United States and the upcoming USMCA review.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> Major institutions are all projecting slow growth: the IMF forecasts 1.6%, the World Bank 1.3%, and the OECD also 1.3% for Mexico in 2026. When the economy is shrinking rather than growing, businesses earn less, hiring slows, and the government collects fewer taxes — all of which can put pressure on the peso and on your purchasing power.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://tradingeconomics.com/mexico/currency" target="_blank" rel="noopener">Peso Holds Near 17.3 per Dollar as Markets Watch Iran Talks and Domestic Data</a>
+        <span class="source">Trading Economics / Bloomberg</span></h3>
+    <p class="summary">
+      The Mexican peso traded near 17.3 per U.S. dollar in late May as markets monitored developments in peace negotiations between the U.S. and Iran, while disagreements over uranium stockpiles and control of the Strait of Hormuz continued to prevent a final deal. Domestically, investors assessed revised GDP data showing Mexico's economy contracted 0.6% quarter-on-quarter in Q1, while inflation (the general rise in prices) slowed more than expected in the first half of May, with annual CPI — the Consumer Price Index, a key measure of inflation — easing to 4.1%. The backdrop also included Moody's downgrade of Mexico's sovereign credit rating to "Baa3," the lowest investment-grade level, and S&P Global's decision to revise Mexico's outlook to "negative."
+    </p>
+    <p class="why"><strong>Why it matters:</strong> Over the past year, the USD/MXN exchange rate has changed by –10.41%, trading within a 52-week range of 17.08 to 19.44 pesos per dollar — meaning the peso has actually strengthened significantly. For a beginner investor, watching the peso helps you understand the cost of imported goods, the value of remittances sent from the U.S., and whether foreign investors see Mexico as a safe bet.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://www.riotimesonline.com/global-economy-briefing-may-30-2026/" target="_blank" rel="noopener">Global Markets: Dow Hits 51,000 Record, S&P 500 Posts Ninth Straight Weekly Gain</a>
+        <span class="source">Rio Times / Deloitte Insights</span></h3>
+    <p class="summary">
+      The Dow Jones Industrial Average closed above 51,000 for the first time in its history, gaining 363 points to finish at 51,032.46, while the S&P 500 added 0.22% to a record 7,580.06, sealing its ninth consecutive weekly gain — the longest winning streak of 2026. German inflation also cooled, with CPI — the main measure of consumer prices — dropping to 2.6% in May from 2.9%, well below expectations and delivering the European Central Bank (ECB) its cleanest disinflation (slowing inflation) result of the year. Meanwhile, U.S. monetary policy expectations shifted: futures markets priced a 74.5% probability that the Federal Reserve's benchmark interest rate will remain unchanged for the rest of 2026, while the probability of a rate hike rose to 14.9%, up from just 0.8% a month earlier.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> Investors reacted to Middle East uncertainty by pushing up oil prices, pushing down equity prices in some sessions, and boosting bond yields. For a Mexican investor, a stronger U.S. stock market can boost confidence, but expectations of higher U.S. interest rates reduce the appeal of peso-denominated investments and can weaken the MXN.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://foreignpolicy.com/2026/05/29/usmca-review-trade-talks-mexico-us-trump-sheinbaum-cartels/" target="_blank" rel="noopener">As USMCA Trade Talks Begin, U.S.–Mexico Political Tensions Cloud Economic Outlook</a>
+        <span class="source">Foreign Policy</span></h3>
+    <p class="summary">
+      Washington's increasing hawkishness over security and corruption south of the border has pushed U.S.–Mexico ties to a boiling point just ahead of the USMCA review talks, which formally began on May 28; depending on the outcome, U.S.–Mexico relations could be derailed for years to come. Analysts say it is unlikely that all three USMCA countries will agree to extend the deal in its current form, and though Trump has floated exiting USMCA altogether, an annual review process is considered the most likely outcome. Goldman Sachs cited limited fiscal support, ongoing uncertainty in trade relations with the United States, and domestic political risks as the main factors constraining Mexico's growth.
+    </p>
+    <p class="why"><strong>Why it matters:</strong> The USMCA review in July 2026 is the event that will define Mexico's economic decade: a favorable outcome locks in North American manufacturing integration for years; an unfavorable outcome resets the entire investment thesis. For everyday Mexicans, the result will affect factory jobs, wages, and the prices of goods imported from the U.S.</p>
+  </div>
+
+</div>
+
+<div class="learn">
+  <h3>💡 Today's Concept: CREDIT RATINGS</h3>
+  <p><strong>What it is:</strong> A credit rating is like a report card for a country (or company), issued by agencies like Moody's, S&P, and Fitch, that tells investors how risky it is to lend that country money. A higher rating (like "AAA") means the country is seen as very safe; a lower rating or a "negative outlook" means investors worry the country may struggle to repay its debts.</p>
+  <p><strong>How to apply it:</strong> Moody's recently downgraded Mexico's sovereign rating to "Baa3" — the lowest investment-grade level — and S&P revised Mexico's outlook to "negative." In practice, this means Mexico may have to pay higher interest rates to borrow money internationally, which leaves less money in the federal budget for roads, schools, or social programs. As a beginner investor, whenever you see a credit rating downgrade in the news, ask yourself: "Will the government have less money to spend? Could this weaken the peso or push interest rates higher?" — because both effects ripple into your everyday finances.</p>
+</div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- AI -->
+  <div class="ai-section">
+    <div class="section-label label-ai">🤖 AI — Personal &amp; GTM</div>
+    Now I have strong, well-sourced material for all 5 items. Let me compose the full HTML newsletter section.
+
+<div class="items">
+
+  <div class="item">
+    <h3><a href="https://www.cnbc.com/2026/05/19/google-ai-ultra-gemini-spark-omni.html" target="_blank" rel="noopener">Google Debuts Gemini Spark Agent and Cheaper Gemini 3.5 Flash at I/O 2026</a>
         <span class="source">CNBC</span></h3>
-    <p class="summary">
-      Technology has been the standout sector of May, driven by blockbuster AI-linked earnings. Tech stocks rallied after a strong earnings outlook from Snowflake revived enthusiasm around the AI trade — shares soared 36.5% in their best day ever after the company issued strong guidance and inked a plan to spend $6 billion on Amazon Web Services over five years. Dell Technologies, which reported after the bell on Thursday, surged nearly 30% on Friday, continuing a hot streak of recent tech earnings. Earlier in the week, shares of Micron Technology jumped 19% and topped $1 trillion in market capitalization amid bullishness from analysts on Wall Street.
-    </p>
-    <p class="why"><strong>Why it matters:</strong> Technology has been the best-performing sector since the March 30 market lows. These AI-driven earnings results are showing investors that companies are translating AI investment into real revenue growth — a key question the market has been asking all year. For a beginner investor, this illustrates how a single strong earnings report can move an entire sector.</p>
-  </div>
-
-</div>
-
----
-
-**📌 USD/MXN Context:** As of May 31, the USD/MXN exchange rate stood at approximately 17.36 pesos per dollar (Bloomberg). During the past week, the pair fluctuated between a high of 17.44 on May 28 and a low of 17.26 on May 25. Over the past year, the USD/MXN has changed by –10.41%, reflecting a strengthening peso. The peso has benefited from Mexico's relatively high interest rates maintained by Banxico, though ongoing global uncertainty from the Iran conflict and sticky U.S. inflation continue to create volatility for emerging-market currencies.
-
----
-
-<div class="learn">
-  <h3>💡 Today's Concept: THE PCE INDEX (Personal Consumption Expenditures)</h3>
-  <p>The PCE index measures how much Americans are paying for goods and services over time — it is the Federal Reserve's <em>preferred</em> inflation gauge. When PCE rises above the Fed's 2% target (as it did in April at 3.8%), it signals that prices are heating up, which makes the Fed less likely to cut interest rates. For investors in Mexico, this matters because when U.S. rates stay high, the dollar tends to strengthen against the peso, making imports from the U.S. more expensive for Mexican consumers and businesses.</p>
-</div>
-</div>
-
-<!-- ECONOMICS -->
-<div class="section economics">
-  <div class="section-header">🌎 Economics — World &amp; Mexico</div>
-  <div class="items">
-
-  <div class="item">
-    <h3><a href="https://mexicobusiness.news/policyandeconomy/news/banxico-cuts-mexico-2026-gdp-forecast-11" target="_blank" rel="noopener">Banxico Cuts Mexico's 2026 GDP Forecast to 1.1% After Q1 Contraction</a>
-        <span class="source">Mexico Business News</span></h3>
-    <p class="summary">Banxico (Mexico's central bank) released its Q1 2026 Quarterly Report, revising its 2026 GDP growth forecast down sharply from 1.6% to 1.1%, blaming a "considerably weaker" first-quarter performance and warning that investment could remain weak at least until the second half of 2026. According to INEGI data, the Mexican economy contracted 0.8% in Q1 2026 compared to the previous quarter, with all three major sectors declining — agriculture fell 1.4%, manufacturing and construction fell 1.1%, and services dropped 0.6%. One silver lining: Mexico's role as a host nation for the 2026 FIFA World Cup is expected to provide a temporary boost to GDP in Q2 and Q3, as tourism, hospitality, and services pick up.</p>
-    <p class="why"><strong>Why it matters:</strong> The USMCA trade agreement review — which opened its first formal negotiating round the same week — is widely cited as the dominant variable shaping Mexico's investment and growth outlook, with analysts already cutting their private forecasts in response to trade uncertainty. For everyday Mexicans, slower growth can mean fewer jobs, tighter budgets, and more pressure on the peso.</p>
+    <p class="summary">At its annual Google I/O developer conference, Google rolled out its latest version of Gemini and a new artificial intelligence model designed to simulate the physical world, racing to keep pace in model development while also providing more agentic services to its massive user base. On the personal AI front, Google announced Gemini Spark, a new general-purpose AI agent in the Gemini app that can reason across information in connected apps, saying it wants to help users navigate their digital lives by "taking action on your behalf while under your direction" — available first to Google AI Ultra subscribers. On the cost side, the company showcased Gemini 3.5 Flash, a lighter-weight model that offers cutting-edge capabilities at half, or in some cases close to one-third, the price of comparable frontier models, according to CEO Sundar Pichai.</p>
+    <p class="why"><strong>Why it matters:</strong> Google's strategy is to prioritize models cheap and fast enough to deploy across products used by billions, rather than chasing benchmark supremacy alone — its key advantage may be pairing a leading model with enormous platforms that dwarf even ChatGPT in scale. For a beginner investor, this signals that Google is betting its trillion-dollar ecosystem on AI integration, making Alphabet a company worth watching closely.</p>
   </div>
 
   <div class="item">
-    <h3><a href="https://www.fxstreet.com/news/banxico-slashes-2026-gdp-forecast-sees-inflation-rising-202605272026" target="_blank" rel="noopener">Banxico Holds Rate at 6.5% and Signals End of Cutting Cycle as Inflation Stays Elevated</a>
-        <span class="source">FXStreet</span></h3>
-    <p class="summary">Banxico lowered its benchmark interest rate by 25 basis points to 6.50% at its May 7 meeting — its lowest level since April 2022 — in a split 3-2 decision, citing Mexico's economic contraction in Q1 2026 and reduced demand-driven inflation pressures. Banxico then signaled that maintaining the policy rate at its current level will likely be appropriate going forward, given ongoing geopolitical and trade-related uncertainty. Meanwhile, Mexico's inflation eased slightly to 4.45% in April 2026 (down from 4.59% in March), while core inflation — which strips out volatile food and energy — fell to 4.26%, its lowest in 8 months.</p>
-    <p class="why"><strong>Why it matters:</strong> Despite the rate cut, the interest rate gap still favors Mexico: with Banxico at 6.5% versus the U.S. Fed at 3.75%, peso-denominated assets remain relatively more attractive to global investors, which has been a key pillar of peso stability. If Banxico pauses cuts while inflation stays above target, borrowing costs for Mexican households and businesses may stay higher for longer.</p>
+    <h3><a href="https://medium.com/@btibor91/the-week-in-openai-and-anthropic-news-week-19-2026-97417d0e3b35" target="_blank" rel="noopener">OpenAI Makes GPT-5.5 Instant the Default and Launches ChatGPT for Excel & Google Sheets</a>
+        <span class="source">Medium / Tibor Blaho AI Roundup</span></h3>
+    <p class="summary">OpenAI rolled out GPT-5.5 Instant as the new ChatGPT default model with memory sources, and launched ChatGPT for Excel and Google Sheets globally. The update also included three new real-time voice models in the API — GPT-Realtime-2, GPT-Realtime-Translate, and GPT-Realtime-Whisper — expanding the ways users can interact with AI beyond text. The GPT-5.5 model supports text, images, and voice input in the same conversation; the free tier gives access with some usage limits, while ChatGPT Plus at $20/month removes most of those limits and adds memory and custom GPTs.</p>
+    <p class="why"><strong>Why it matters:</strong> The ChatGPT-for-spreadsheets integration is a direct, free upgrade for anyone who already uses Excel or Google Sheets — you can now ask AI to analyze your personal budget, compare investment options, or summarize data without leaving the app. This is the clearest "use it today" moment for beginner investors in Mexico managing their finances.</p>
   </div>
 
   <div class="item">
-    <h3><a href="https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html" target="_blank" rel="noopener">Middle East Conflict Rattles Global Markets: Oil Shortage Weighs on Growth and Inflation Worldwide</a>
-        <span class="source">Deloitte Global Economic Weekly Update</span></h3>
-    <p class="summary">Many investors are growing more pessimistic about a near-term resolution to the Middle East conflict; a US-China summit failed to carve a path to ending shipping disruptions through the Strait of Hormuz, prompting markets to push oil prices up, equity prices down, and bond yields higher. The International Energy Agency estimates that, with the Strait of Hormuz effectively closed, the world's oil supply has declined by 11.1 million barrels per day. The sharp rise in oil prices has boosted inflationary pressures and weighed on household purchasing power globally, creating a dilemma for major central banks — including the Bank of Japan — which must balance slowing growth with rising prices.</p>
-    <p class="why"><strong>Why it matters:</strong> For Mexico, higher fuel costs linked to the Middle East conflict are already showing up in transportation prices, which rose faster in April. A prolonged oil supply shock could push inflation back up in Mexico, leaving Banxico less room to cut rates and potentially pressuring the peso if global risk appetite weakens.</p>
+    <h3><a href="https://www.axios.com/2026/05/28/anthropic-ai-fundraising-openai" target="_blank" rel="noopener">Anthropic Raises $65B, Now Worth $965B — Surpassing OpenAI as Most Valuable AI Startup</a>
+        <span class="source">Axios</span></h3>
+    <p class="summary">Anthropic has raised $65 billion, valuing the AI lab at $965 billion — making it the most valuable private AI startup in the world, surpassing OpenAI. The fundraise was announced just days ago and comes on the heels of Anthropic releasing its powerful "Mythos" model, which prompted a wave of attention around cyberattacks on critical software and put Anthropic firmly at the frontier of AI. Many are pointing to Anthropic as having surged forward thanks to Mythos, though executives at Google, OpenAI, and Anthropic increasingly describe the frontier race as effectively neck-and-neck, with companies making different tradeoffs around cost, speed, and computing resources.</p>
+    <p class="why"><strong>Why it matters:</strong> A $965B private valuation is close to the size of some of the largest public companies in Mexico's entire stock market (the BMV). For an investor learning about tech valuations, this illustrates how rapidly capital concentrates around AI leaders — and why an IPO from Anthropic could be one of the biggest market events of 2026.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-11-gartner-survey-reveals-marketing-leaders-expect-ai-automation-of-marketing-work-to-double-to-36-percent-by-2028" target="_blank" rel="noopener">Gartner: AI Will Automate 36% of All Marketing Work by 2028 — Double Today's Rate</a>
+        <span class="source">Gartner</span></h3>
+    <p class="summary">Marketing leaders expect AI-driven automation of marketing work to more than double, from 16% in 2026 to 36% by 2028, according to a survey of 402 CMOs conducted by Gartner from August through October 2025. CMOs who fail to move beyond early AI use cases risk getting stuck in costly "AI competency traps," while a small but growing group of "market-shaper" CMOs are using AI to drive enterprise growth, customer confidence, and competitive differentiation. Separately, the global AI marketing market reached $47.32 billion in 2026 and is projected to climb to $107.5 billion by 2028, growing at a compound annual rate of 36.6%.</p>
+    <p class="why"><strong>Why it matters:</strong> Companies that consolidate their marketing technology stacks around AI-capable platforms report 50–77% reductions in technology costs. For a beginner investor, this data from Gartner — the world's leading research firm for enterprise tech — is a strong signal to watch AI-native marketing software companies as an investment category.</p>
+  </div>
+
+  <div class="item">
+    <h3><a href="https://almcorp.com/blog/ai-powered-marketing-automation/" target="_blank" rel="noopener">Generative Engine Optimization (GEO) Is the New SEO — And Companies Are Racing to Own It</a>
+        <span class="source">ALM Corp / NoGood</span></h3>
+    <p class="summary">Generative Engine Optimization (GEO) is the practice of structuring a brand's content and technical infrastructure so that AI engines like ChatGPT, Gemini, Perplexity, and Claude cite and recommend it in their answers — unlike traditional SEO, which optimizes for ranked lists on Google, GEO targets how large language models retrieve, evaluate, and reference brands in conversational responses. The stakes are real: Semrush data shows an 800% year-over-year increase in referrals from large language models, while traditional search volume is predicted to decline by 25% by 2026 as LLM-based queries absorb a larger share of information-seeking behavior. Crucially, AI-referred visitors convert at 14.2% on average versus 2.8% for Google organic, because the buyer arrives pre-informed and recommendation-primed.</p>
+    <p class="why"><strong>Why it matters:</strong> Marketing agency Jellyfish, a pioneer in AI-driven media buying, replaced portions of its traditional human media buyers with bots to reduce campaign launch times by 65%, automating bidding, placement, and targeting across Google and Meta. Companies investing in GEO now are locking in AI citation share before their competitors catch on — making GEO platforms one of the fastest-growing SaaS categories to monitor as an investor.</p>
   </div>
 
 </div>
 
 <div class="learn">
-  <h3>💡 Today's Concept: GDP (Gross Domestic Product)</h3>
-  <p>GDP is the total value of all goods and services a country produces in a given period — think of it as the economy's "report card." When GDP grows, the economy is expanding (more jobs, more income); when it shrinks — as happened in Mexico in Q1 2026 — it signals that businesses and consumers are producing and spending less. GDP growth is typically measured as the annual change in <em>real</em> (inflation-adjusted) GDP compared with the previous year, so it tells you how much the economy truly grew after stripping out the effect of rising prices.</p>
+  <h3>💡 Today's Concept: MARKET CAPITALIZATION vs. VALUATION (PUBLIC vs. PRIVATE)</h3>
+  <p><strong>What it is:</strong> Market capitalization is the total value investors assign to a publicly traded company — calculated by multiplying the share price by the number of shares. A "valuation" for a private company like Anthropic works similarly, but instead of a stock price, it's negotiated during a funding round: investors agree to pay a price that implies the whole company is worth a certain amount.</p>
+  <p><strong>How to apply it:</strong> When you read that Anthropic is "valued at $965 billion," treat it like a price tag negotiated in a private deal — not a price set by millions of daily trades on a stock exchange. It means early investors and the company agreed on that number during the latest fundraising round. As a beginner investor in Mexico, a practical exercise: look up the market cap of América Móvil (AMX) on the BMV today and compare it to Anthropic's private valuation. That comparison instantly shows you the enormous scale of capital flowing into AI — and why the upcoming Anthropic or OpenAI IPOs could be landmark events worth following closely.</p>
 </div>
-</div>
-
-<!-- AI -->
-<div class="section ai">
-  <div class="section-header">🤖 AI — Personal Life &amp; GTM</div>
-  <div class="items">
-
-  <div class="item">
-    <h3><a href="https://datanorth.ai/blog/top-10-ai-tools-for-2026" target="_blank" rel="noopener">Claude Cowork Goes GA & Cursor 3 Ships — The AI Productivity Stack Just Leveled Up</a>
-        <span class="source">DataNorth AI</span></h3>
-    <p class="summary">
-      Anthropic shipped Claude Cowork — its desktop AI companion — making it generally available on macOS and Windows, while Cursor 3 (shipped April 2, 2026) is the biggest release since the company forked VS Code, introducing an Agents Window that lets developers run multiple AI agents in parallel across local machines, worktrees, SSH, and cloud environments. The product philosophy has explicitly shifted: you are the architect, agents are the builders.
-    </p>
-    <p class="why"><strong>Why it matters:</strong> Many new AI productivity tools in 2026 focus on automation-first workflows that go beyond chat-based responses and execute tasks across apps — managing emails, generating reports, and updating dashboards automatically. The trend is shifting toward AI agents rather than simple assistants. As a beginner, this means you can delegate entire workflows to AI, not just single questions.</p>
   </div>
 
-  <div class="item">
-    <h3><a href="https://www.klaviyo.com/newsroom/klaviyo-anthropic-expanded-integration" target="_blank" rel="noopener">Klaviyo + Anthropic: Agentic Marketing Workflows Come to Claude</a>
-        <span class="source">Klaviyo Newsroom (Official)</span></h3>
-    <p class="summary">
-      Klaviyo (NYSE: KVYO), the autonomous B2C CRM, announced an expanded integration with Anthropic to bring new agentic marketing workflows to Claude — connecting Klaviyo's MCP server across Claude.ai and Claude Cowork so brands can securely access customer and performance data and turn it into actionable outputs such as performance reports, campaign briefs, and marketing insights. Marketers simply describe an outcome — "audit my flows," "build weekly reports," "draft re-engagement campaigns" — step away, and come back to finished work.
-    </p>
-    <p class="why"><strong>Why it matters:</strong> Per Salesforce's State of Marketing 2026, 87% of marketers now use generative AI in at least one workflow (up from 51% in 2024), and AI-driven campaigns deliver roughly 22% higher ROI with 29% lower acquisition costs than traditional ones. This Klaviyo–Claude integration is a concrete, real-world example of how AI is replacing manual marketing grunt work — a model any small business can learn from.</p>
-  </div>
-
-  <div class="item">
-    <h3><a href="https://www.wordstream.com/blog/2026-ai-marketing-trends" target="_blank" rel="noopener">Zero-Click AI Search Is Rewriting the Rules of Marketing — Here's How to Win</a>
-        <span class="source">WordStream</span></h3>
-    <p class="summary">
-      Zero-click search is no longer confined to Google — in 2026 it stretches across ChatGPT, Perplexity, Gemini, Bing, and Meta AI. Users ask questions inside these tools, receive instant answers, and often never reach a website. Your content becomes a source rather than a destination. The businesses that thrive in 2026 are the ones that make themselves easy for AI to understand — publishing information that is structured, credible, and rooted in real experience.
-    </p>
-    <p class="why"><strong>Why it matters:</strong> AI assistants have changed how customers search — instead of asking for a list of businesses, they ask for a task to be completed. A user no longer searches "plumber near me"; they say "Can you get someone to fix my sink this afternoon?" The assistant selects a provider it can justify. For any entrepreneur in Mexico, being "AI-visible" is fast becoming as important as being Google-visible.</p>
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Generated by Claude · All sources linked above · Not financial advice</p>
+    <p style="margin-top:0.3rem">Sunday, May 31, 2026 · 07:48 PM</p>
   </div>
 
 </div>
-
-<div class="learn">
-  <h3>💡 Today's Concept: Model Context Protocol (MCP)</h3>
-  <p>MCP is a technical standard that lets AI models like Claude securely "plug in" to external apps — such as your CRM, email platform, or database — and read or act on real data, not just text you paste into a chat. Klaviyo's MCP server is designed to securely connect customer data with leading AI systems, allowing brands to analyze their marketing and business performance where they already work — a model-agnostic approach that helps companies adopt new AI capabilities while maintaining control of their data. Think of MCP as a universal power adapter: it lets any AI tool speak the same language as your business software, turning a chatbot into a true digital coworker.</p>
-</div>
-</div>
-
-<footer>
-  <p>Generated by Claude · Sources linked above · Not financial advice</p>
-</footer>
-
 </body>
 </html>
